@@ -25,12 +25,12 @@ from app_modules.core import SingleConfig
 from app_modules.core import AppConstants
 from app_modules.commands.command import Command
 
-class SetConf ( Command ):
-    short_arg   = AppConstants.COMMANDS.SET_DB.SHORT_ARG
-    long_arg    = AppConstants.COMMANDS.SET_DB.LONG_ARG
-    cmd_help    = AppConstants.COMMANDS.SET_DB.HELP
-    cmd_type    = AppConstants.COMMANDS.SET_DB.TYPE
-    cmd_action  = AppConstants.COMMANDS.SET_DB.ACTION
+class Set_conf ( Command ):
+    short_arg   = 'c'
+    long_arg    = 'conf'
+    cmd_help    = 'pass a configuration file'
+    cmd_type    = str
+    cmd_action  = None
 
     def __init__( self, param = None ):
         super().__init__( )

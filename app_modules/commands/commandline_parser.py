@@ -1,5 +1,5 @@
-#   File : commandline_parser
-#   Author : stefano prina 
+# File : commandline_parser
+# Author : stefano prina 
 # MIT License
 # 
 # Copyright (c) 2019 Stefano Prina
@@ -26,21 +26,21 @@ import argparse
 import importlib
 from app_modules.core import LoggerFactory
 from app_modules.core import AppConstants
-from app_modules.commands.run import *
+from app_modules.commands.runner import *
 from app_modules.commands.setter import *
 
 class CommandLine_Parser( object ):
     def __init__( self ):
         self.logger = LoggerFactory.getLogger( str( self.__class__ ))
 
-        self.parser = argparse.ArgumentParser( prog=AppConstants.APP.NAME, description=AppConstants.APP.DESCRIPTION )
+        self.parser = argparse.ArgumentParser( prog=AppConstants.APP_NAME, description=AppConstants.APP_DESCRIPTION )
 
         self.rcl = [ 
-            RunVersion
+            Run_version
             ]
 
         self.scl = [ 
-            SetConf
+            Set_conf
             ]
         
         for cmd in self.rcl + self.scl:
@@ -77,25 +77,25 @@ class CommandLine_Parser( object ):
         command_list = []
 
         self.logger.debug('add set_env command')
-        command_list.append( SetEnv() )
+        command_list.append( Set_env() )
 
         self.logger.debug('parse starts')
 
         args = self.parser.parse_args()
 
         for cmd in self.scl:
-            if getattr( args, cmd.long_arg ) :
+            if getattr( args, cmd.long_arg.replace("-","_") ) :
                 self.logger.debug("passed option --" + cmd.long_arg)
-                command_list.append( cmd( getattr( args, cmd.long_arg ) ) )
+                command_list.append( cmd( getattr( args, cmd.long_arg.replace("-","_") ) ) )
 
         count = 0
         for cmd in self.rcl:
-            if getattr( args, cmd.long_arg ) :
+            if getattr( args, cmd.long_arg.replace("-","_") ) :
                 self.logger.debug("passed option --" + cmd.long_arg)
-                command_list.append( cmd( getattr( args, cmd.long_arg ) ) )
+                command_list.append( cmd( getattr( args, cmd.long_arg.replace("-","_") ) ) )
                 count += 1
 
-            if count > 0 :
+            if count > 1 :
                 self.logger.warn("it is possible use only one task")
                 break
 

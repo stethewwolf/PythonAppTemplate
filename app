@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Author : stefano prina <stethewwolf@null.net>
+# Author : stefano prina <stethewwolf@null.net>  stefano-prina@outlook.it
 #
 # MIT License
 # 

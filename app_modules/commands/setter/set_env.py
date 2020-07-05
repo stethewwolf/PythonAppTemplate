@@ -30,20 +30,24 @@ from app_modules.commands.command import Command
 
 import os, sqlite3
 
-class SetEnv( Command ):
-    short_arg   = AppConstants.COMMANDS.SET_ENV.SHORT_ARG
-    long_arg    = AppConstants.COMMANDS.SET_ENV.LONG_ARG
-    cmd_help    = AppConstants.COMMANDS.SET_ENV.HELP
-    cmd_type    = AppConstants.COMMANDS.SET_ENV.TYPE
-    cmd_action  = AppConstants.COMMANDS.SET_ENV.ACTION
+class Set_env( Command ):
+    short_arg   = None
+    long_arg    = None
+    cmd_help    = None
+    cmd_type    = None
+    cmd_action  = None
 
     def __init__( self, param  = None ):
         super().__init__( )
         self.logger = LoggerFactory.getLogger( str( self.__class__ ))
 
     def run( self ):
-        self.home_app()
-        self.database()
+        # create app dir inside user home directory
+        # self.home_app()
+
+        # create sqlite db inside app directory 
+        # self.database()
+        pass
     
     def home_app(self):
         if not os.path.exists( self.cfg['private']['home'] ) :

@@ -27,11 +27,11 @@ from app_modules.core import SingleConfig
 from app_modules.core import AppConstants
 
 class Command ():
-    short_arg   = AppConstants.COMMANDS.CMD.SHORT_ARG
-    long_arg    = AppConstants.COMMANDS.CMD.LONG_ARG
-    cmd_help    = AppConstants.COMMANDS.CMD.HELP
-    cmd_type    = AppConstants.COMMANDS.CMD.TYPE
-    cmd_action  = AppConstants.COMMANDS.CMD.ACTION
+    short_arg   = None
+    long_arg    = None
+    cmd_help    = 'this is a command'
+    cmd_type    = None
+    cmd_action  = 'store_true'
 
     def __init__( self, param = None ):
         self.cfg = SingleConfig.getConfig()

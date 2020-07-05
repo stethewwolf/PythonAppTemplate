@@ -25,12 +25,14 @@
 import logging, sys
 
 loggerList = []
-logLevel = logging.DEBUG
+logLevel = logging.INFO
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-def getLogger( name ):
-    logger = logging.getLogger( name )
-    logger.setLevel(logging.DEBUG)
+def getLogger(name):
+    global logLevel
+    global loggerList
+    logger = logging.getLogger(name)
+    logger.setLevel(logLevel)
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logLevel)
     handler.setFormatter(formatter)
@@ -40,7 +42,9 @@ def getLogger( name ):
 
     return logger
 
-def setLogFile( file ):
+def setLogFile(file):
+    global logLevel
+    global loggerList
     handler = logging.StreamHandler(file)
     handler.setLevel(logLevel)
     handler.setFormatter(formatter)
