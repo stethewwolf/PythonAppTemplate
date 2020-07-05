@@ -36,7 +36,8 @@ class CommandLine_Parser( object ):
         self.parser = argparse.ArgumentParser( prog=AppConstants.APP_NAME, description=AppConstants.APP_DESCRIPTION )
 
         self.rcl = [ 
-            Run_version
+            Run_version,
+            Say_hello
             ]
 
         self.scl = [ 
